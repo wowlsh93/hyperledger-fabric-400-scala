@@ -1,0 +1,5 @@
+package fabric
+
+class Consumer {
+
+}
