@@ -1,23 +1,18 @@
 package fabric
 
+import akka.actor.{ActorRef, ActorSystem, Props}
+
 object Fabric {
 
   var MSP_org1 = "org1"
 
+  val fabric = ActorSystem("fabric");
+
+  val peerActor = fabric.actorOf(Peer.props, "Peer")
+  val ordererActor = fabric.actorOf(Orderer.props, "Orderer")
+
   def start(): Unit ={
 
-    // 액터 시스템 생성 . 이름은 mysystem
-    val ourSystem = ActorSystem("mysystem")
-
-    val parent = ourSystem.actorOf(Props[ParentActor], "parent")
-    parent ! "create"
-    parent ! "create"
-    Thread.sleep(1000)
-    parent ! "hi"
-    Thread.sleep(1000)
-    parent ! "stop"
-    Thread.sleep(1000)
-    ourSystem.terminate()
 
   }
 
