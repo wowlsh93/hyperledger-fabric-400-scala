@@ -5,26 +5,21 @@ import akka.actor.{ActorRef, ActorSystem, Props}
 object Fabric {
 
   var MSP_org1 = "org1"
-
   val fabric = ActorSystem("fabric");
+  var peer = new Peer(fabric)
 
-  val peerActor = fabric.actorOf(Peer.props, "Peer")
-  val ordererActor = fabric.actorOf(Orderer.props, "Orderer")
-
-  def start(): Unit ={
-
-
+  def start(): Unit = {
+    peer.start()
   }
 
   def writeTransaction (key : String, value : String, msp : String): RWSet ={
 
-    var rwset = new RWSet;
-
-    return rwset;
+    val t = new Transaction(msp, key, value)
+    val rwset1 = peer.addTrans(t)
+    return rwset1
   }
 
   def readTranaction (key : String) : String ={
-
     return "1";
   }
 }

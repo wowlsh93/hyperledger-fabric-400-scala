@@ -1,9 +1,16 @@
 package fabric
 
-import akka.actor.Actor
+import akka.actor
+import akka.actor.{Actor, Props}
 import akka.event.Logging
 
-class Committer extends Actor {
+object Committer {
+
+  def props(msp : String) : Props =
+    actor.Props(new Committer(msp))
+
+}
+class Committer (msp : String) extends Actor {
   val log = Logging(context.system, this)
   def receive = {
     case "hi" =>

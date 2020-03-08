@@ -1,9 +1,5 @@
 package fabric
 
-class Transaction {
+class Transaction (var peer_msp : String,var key: String, var value: String)
 
-}
-
-class _Transaction {
-
-}
+class _Transaction (var key: String,var value: String)

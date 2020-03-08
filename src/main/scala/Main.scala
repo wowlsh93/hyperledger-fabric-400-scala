@@ -14,7 +14,7 @@ object MainSystem extends App {
   val startTime = System.currentTimeMillis
 
 
-  for (i <- 0 until 1) {
+  for (i <- 0 until 1000000) {
     ClientSDK.writeTrans(String.valueOf(i), String.valueOf(i))
   }
 
